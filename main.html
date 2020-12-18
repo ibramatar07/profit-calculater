@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Wish Profit Calc</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" 
+            crossorigin="anonymous">
+        
+        <style>
+            .wrap{
+                /*text-align: center;
+                /*transform: translate(15%,-30%);*/
+                background-color: aqua;
+                width: 700px;
+                height: 550px;
+                margin: 0 auto;
+            }
+
+            .col{
+                column-count: 2;
+            }
+
+            #item{
+                text-align: center;
+                padding-top: 10px;
+            }
+
+        </style>
+
+
+    </head>
+
+    <body>
+        
+        <div class="wrap">
+            <div style="text-align: center;padding-bottom: 10px;">marketplace fee <br><input id="tax" type="number" value="15" placeholder="tax"></div>
+            <div class="col">
+
+                <div class="original-item-cost">
+                    <p style="text-align: center;">item cost <br><input type="number" value="3" id="itemcost" placeholder="cost"></p>
+                </div>
+
+                <div class="original-shipping cost">
+                    <p style="text-align: center;">shipping <br><input id="shipping" value="1" type="number" placeholder="shipping"></p>
+                </div>
+
+                <div class="dropshipping-cost">
+                    <p style="text-align: center;">ds-price <br><input id="dsprice" value="6.99" type="number" placeholder="price"></p>
+                </div>
+
+                <div class="dropshipping-shipping">
+                    <p style="text-align: center;">ds-shipping <br><input id="dsshipping" value="2.69" type="number" placeholder="dropshipping-shipping"></p>
+                </div>
+
+
+            </div>
+
+            <!--<div style="transform: translate(280%,100%);" class="btn">
+                <button id="find" onclick="">Calculate</button>
+                
+            </div>-->
+    
+           <button id="calculate" onclick="calculate()" style="margin-left: 320px;">calculate</button>
+           <p style="text-align: center;">Profit: <strong id="item"></strong></p>
+
+
+        </div>
+
+        <script>
+            var calc;
+            var percent;
+            var result1 = document.getElementById("item");
+            var percentToGet;
+            function calculate(){
+                tax = parseFloat(document.getElementById("tax").value) || 0,
+                itemCost = parseFloat(document.getElementById('itemcost').value) || 0,
+                shipping = parseFloat(document.getElementById('shipping').value) || 0,
+                dsprice = parseFloat(document.getElementById('dsprice').value) || 0,
+                dsshipping = parseFloat(document.getElementById('dsshipping').value) || 0,
+                
+                percentToGet = tax;
+
+
+                calc = ((dsprice + dsshipping) - (itemCost + shipping));
+
+                percent = (percentToGet / 100) * calc;
+
+               result1.innerHTML = calc - percent;
+
+
+                
+
+
+            }
+        </script>
+    </body>
+
+
+</html>
